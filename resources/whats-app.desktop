@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Whats App
+Exec=whats-app
+Icon=whats-app
+Type=Application
+Categories=Utility;WebApp;
+Terminal=false
+StartupNotify=true

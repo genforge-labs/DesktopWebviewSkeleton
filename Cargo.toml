@@ -1,0 +1,23 @@
+[package]
+name = "whats-app"
+version = "0.1.0"
+edition = "2024"
+authors = ["GenForge info@genforge.com"]
+description = "A simple WhatsApp WebView wrapper built with rust"
+license = "MIT"
+
+[dependencies]
+wry = "0.52.1"
+tao = "0.34.0"
+
+[package.metadata.deb]
+maintainer = "GenForge info@genforge.com"
+depends = "$auto"
+section = "utils"
+priority = "optional"
+assets = [
+    ["target/release/whats-app", "usr/bin/", "755"],
+    ["resources/whats-app.desktop", "usr/share/applications/", "644"],
+    ["resources/whats-app.png", "usr/share/icons/hicolor/128x128/apps/", "644"]
+]
+
