@@ -13,7 +13,7 @@ dirs = "5.0"
 
 [package.metadata.deb]
 maintainer = "GenForge info@genforge.com"
-depends = "$auto"
+depends = "$auto, libwebkit2gtk-4.1-0"
 section = "utils"
 priority = "optional"
 assets = [
