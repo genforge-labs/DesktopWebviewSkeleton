@@ -3,27 +3,31 @@ use tao::{
     event_loop::{ControlFlow, EventLoop},
     window::WindowBuilder,
 };
-use wry::WebViewBuilder;
+use wry::{WebViewBuilder, WebContext}; // Import WebContext
+use std::path::PathBuf;
 
 fn main() -> wry::Result<()> {
     let event_loop = EventLoop::new();
 
-    // 👇 Add the title here
     let window = WindowBuilder::new()
-        .with_title("WhatsApp") // ✅ set the window title
+        .with_title("WhatsApp")
         .build(&event_loop)
         .unwrap();
 
-    let builder = WebViewBuilder::new()
-        .with_url("https://web.whatsapp.com/")
+    // -- Create a data directory for the webview --
+    let data_dir = dirs::data_dir().unwrap().join("com.genforce.whatsapp");
+    let mut web_context = WebContext::new(Some(data_dir));
+
+    let builder = WebViewBuilder::new_with_web_context(&mut web_context) // Use the web_context
+        .with_url("https://trello.com/")
         .with_drag_drop_handler(|e| {
             match e {
                 wry::DragDropEvent::Enter { paths, position } => {
-                    println!("DragEnter: {position:?} {paths:?} ")
+                    println!("DragEnter: {position:?} {paths:?} ");
                 }
                 wry::DragDropEvent::Over { position } => println!("DragOver: {position:?} "),
                 wry::DragDropEvent::Drop { paths, position } => {
-                    println!("DragDrop: {position:?} {paths:?} ")
+                    println!("DragDrop: {position:?} {paths:?} ");
                 }
                 wry::DragDropEvent::Leave => println!("DragLeave"),
                 _ => {}

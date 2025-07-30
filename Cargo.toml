@@ -9,6 +9,7 @@ license = "MIT"
 [dependencies]
 wry = "0.52.1"
 tao = "0.34.0"
+dirs = "5.0"
 
 [package.metadata.deb]
 maintainer = "GenForge info@genforge.com"
